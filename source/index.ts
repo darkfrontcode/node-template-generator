@@ -8,32 +8,17 @@ import { TemplateGenerator } 	from './template-generator.class'
 
 const log = console.log
 
-const ComponentName = () => {
+const rl = readline.createInterface({
+	input: process.stdin,
+	output: process.stdout
+})
 
-	return new Promise((res, rej) => {
-		try
-		{
-			const rl = readline.createInterface({
-				input: process.stdin,
-				output: process.stdout
-			})
-			
-			log(chalk`{magenta Type component name:}`)
-			
-			rl.on('line', (name:string) => {
-				rl.close()
-				return res(name)
-			})
-		}
-		catch(err)
-		{
-			rej(err)
-		}
-	})
+log(chalk`{magenta Type component name:}`)
+log(chalk`{gray {white Example:} 'header, modal-async, lazy-loader-require, etc' }`)
 
-}
+rl.on('line', (name:string) => {
 
-const Next = (name:string) => {
+	rl.close()
 	
 	const nameGenerator				= new NameGenerator(name)
 	const componentTemplate 		= TemplateGenerator.component(nameGenerator)
@@ -67,14 +52,5 @@ const Next = (name:string) => {
 	}
 
 	build()
-	
-}
 
-async function run()
-{
-	let name:string
-	await ComponentName().then((res:string) => name = res)
-	Next(name)
-}
-
-run()
+})
