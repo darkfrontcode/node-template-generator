@@ -2,8 +2,8 @@ import * as path 				from 'path'
 import * as fs 					from 'fs'
 import * as readline			from 'readline'
 import chalk 					from 'chalk'
-import { component } 			from './component'
-import { open } from 'fs';
+import * as angularModule		from './angular-module'
+import * as angularComponent 	from './angular-component'
 
 const log = console.log
 
@@ -55,7 +55,9 @@ const rl = readline.createInterface({
 
 rl.on('line', (option:number) => {
 
-	if(+option != NaN)
+	option = +option
+
+	if(option != NaN)
 	{
 		if(option > 0 && option < 3)
 		{
@@ -64,10 +66,10 @@ rl.on('line', (option:number) => {
 			switch(option)
 			{
 				case 1:
-					console.log('not yet')
+					angularModule.module()
 				break
 				case 2:
-					component()
+					angularComponent.component()
 				break
 			}
 		}

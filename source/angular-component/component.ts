@@ -16,7 +16,7 @@ export const component = () => {
 	})
 	
 	log(chalk`{magenta Type component name:}`)
-	log(chalk`{gray {white Example:} 'header, modal-async, lazy-loader-require, etc' }`)
+	log(chalk`{gray {cyan Example:} 'header, modal-async, lazy-loader-require, etc' }`)
 	
 	rl.on('line', (name:string) => {
 	
