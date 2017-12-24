@@ -48,7 +48,12 @@ log(`
 
 `)
 
-log(chalk`{magenta What's your choice: }`)
+function question()
+{
+	log(chalk`{magenta What's your choice: }`)
+}
+
+question()
 
 const rl = readline.createInterface({
 	input: process.stdin,
@@ -59,7 +64,12 @@ rl.on('line', (option:number) => {
 
 	option = +option
 
-	if(option != NaN)
+	if(isNaN(option))
+	{
+		log(chalk`{red Error: Only numbers are allowed}`)
+		question()
+	}
+	else
 	{
 		if(option > 0 && option < 3)
 		{
@@ -78,10 +88,7 @@ rl.on('line', (option:number) => {
 		else
 		{
 			log(chalk`{red Error: Option must be between 1-2 }`)
+			question()
 		}
-	}
-	else
-	{
-		log(chalk`{red Error: Only numbers are allowed}`)
 	}
 })
