@@ -4,14 +4,16 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"start": "nodemon --exec ts-node --cache-directory .tscache ./source/index.ts --colors",
-		"dev": "nodemon ./source/index.js"
+		"start": "ts-node --cache-directory .tscache ./source/index.ts --colors",
+		"dev:mon": "nodemon --exec ts-node --cache-directory .tscache ./source/index.ts --colors"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
+		"@types/chalk": "^2.2.0",
 		"@types/node": "^8.5.2",
+		"chalk": "^2.3.0",
 		"nodemon": "^1.14.3",
 		"ts-node": "^4.1.0",
 		"typescript": "^2.6.2"
