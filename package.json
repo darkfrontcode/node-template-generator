@@ -1,0 +1,19 @@
+{
+	"name": "node-template-generator",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "nodemon --exec ts-node --cache-directory .tscache ./source/index.ts --colors",
+		"dev": "nodemon ./source/index.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@types/node": "^8.5.2",
+		"nodemon": "^1.14.3",
+		"ts-node": "^4.1.0",
+		"typescript": "^2.6.2"
+	}
+}
