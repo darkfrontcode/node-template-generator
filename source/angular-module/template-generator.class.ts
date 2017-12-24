@@ -8,7 +8,7 @@ export class TemplateGenerator
 		return `import * as angular 				from 'angular'
 import UIRouter 					from '@uirouter/angularjs'
 import { Router } 					from './router'
-import { ${ componentNameGenerator.componentName } } 	from './components/${ componentNameGenerator.name }'
+import { ${ componentNameGenerator.componentName } } 				from './components/${ componentNameGenerator.name }'
 
 export const ${ moduleNameGenerator.captalizeName }Module = angular
 	.module("${ moduleNameGenerator.name }", [ UIRouter ])

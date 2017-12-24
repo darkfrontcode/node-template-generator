@@ -48,6 +48,8 @@ log(`
 
 `)
 
+log(chalk`{magenta What's your choice: }`)
+
 const rl = readline.createInterface({
 	input: process.stdin,
 	output: process.stdout
@@ -66,10 +68,10 @@ rl.on('line', (option:number) => {
 			switch(option)
 			{
 				case 1:
-					angularModule.module()
+					angularModule.task()
 				break
 				case 2:
-					angularComponent.component()
+					angularComponent.task()
 				break
 			}
 		}

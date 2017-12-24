@@ -8,7 +8,7 @@ import { TemplateGenerator } 	from './template-generator.class'
 
 const log = console.log
 
-export const component = () => {
+export const task = () => {
 	
 	const rl = readline.createInterface({
 		input: process.stdin,

@@ -9,7 +9,7 @@ import { TemplateGenerator } 	from './template-generator.class'
 
 const log = console.log
 
-export const module = () => {
+export const task = () => {
 
 	async function getNames()
 	{
