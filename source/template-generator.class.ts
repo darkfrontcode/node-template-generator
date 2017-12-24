@@ -2,6 +2,20 @@ import { NameGenerator } from './name-generator.class'
 
 export class TemplateGenerator
 {	
+	public static module(nameGenerator: NameGenerator) : string
+	{
+		return `import * as angular 				from 'angular'
+import UIRouter 					from '@uirouter/angularjs'
+import { Router } 					from './router'
+import { StylusMagazineComponent } 	from './components/stylus-magazine'
+
+export const StylusMagazineModule = angular
+	.module("stylus.magazine", [ UIRouter ])
+	.component(StylusMagazineComponent.alias, new StylusMagazineComponent())
+	.config(Router)
+		`
+	}
+
 	public static component(nameGenerator: NameGenerator) : string
 	{
 		return `import { ${ nameGenerator.controllerName } } from './${ nameGenerator.name }.controller'
