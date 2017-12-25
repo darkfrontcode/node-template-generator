@@ -1,17 +1,17 @@
 import * as path 				from 'path'
 import * as fs 					from 'fs'
 import * as readline			from 'readline'
-import chalk 					from 'chalk'
 
+import { Log } 					from '../utils/log.class'
 import * as angularComponent 	from '../angular-component'
 import { NameGenerator } 		from './name-generator.class'
 import { TemplateGenerator } 	from './template-generator.class'
 
-const log = console.log
-
 export const task = () => {
 
-	async function getNames()
+	run()
+
+	async function run()
 	{
 		const moduleName = await getConsoleData(
 			'Type module name:', 
@@ -36,39 +36,34 @@ export const task = () => {
 		async function build()
 		{
 
-			const path = `${moduleName}/components/${componentName}`
+			const fullpath = `${moduleName}/components/${componentName}`
 
-			log(chalk`{cyan {underline criating directory.. }}`)
+			Log.creatingDirectory()
 			await fs.mkdirSync(moduleName)
 			await fs.mkdirSync(`${moduleName}/components`)
-			await fs.mkdirSync(path)
-			log(chalk`{yellow done.}`)
+			await fs.mkdirSync(fullpath)
 
-			log(chalk`{cyan {underline criating module.. }}`)
+			Log.creatingModule()
 			await fs.writeFileSync(`${moduleName}/index.ts`, moduleTemplate)
-			log(chalk`{yellow done.}`)
 
-			log(chalk`{cyan {underline criating router.. }}`)
+			Log.creatingRouter()
 			await fs.writeFileSync(`${moduleName}/router.ts`, routerTemplate)
-			log(chalk`{yellow done.}`)
 
-			log(chalk`{cyan {underline criating component entry.. }}`)
-			await fs.writeFileSync(`${path}/index.ts`, componentTemplate)
-			log(chalk`{yellow done.}`)
-	
-			log(chalk`{cyan {underline criating controllers.. }}`)
-			await fs.writeFileSync(`${path}/${componentName}.controller.ts`, controllerTemplate)
-			log(chalk`{yellow done.}`)
-	
-			log(chalk`{cyan {underline criating pug templates.. }}`)
-			await fs.writeFileSync(`${path}/${componentName}.template.pug`, pugTemplate)
-			log(chalk`{yellow done.}`)
-	
-			log(chalk`{cyan {underline criating styles.. }}`)
-			await fs.writeFileSync(`${path}/${componentName}.style.styl`, stylusTemplate)
-			log(chalk`{yellow done.}`)
-	
-			log(chalk`{magenta {underline ${ moduleName } module created!}}`)
+			Log.creatingComponent()
+			await fs.writeFileSync(`${fullpath}/index.ts`, componentTemplate)
+			
+			Log.creatingController()
+			await fs.writeFileSync(`${fullpath}/${componentName}.controller.ts`, controllerTemplate)
+			
+			Log.creatingPug()
+			await fs.writeFileSync(`${fullpath}/${componentName}.template.pug`, pugTemplate)
+			
+			Log.creatingStyle()
+			await fs.writeFileSync(`${fullpath}/${componentName}.style.styl`, stylusTemplate)
+			
+			Log.done()
+			Log.moduleDone(moduleName)
+			
 		}
 	
 		build()
@@ -86,8 +81,8 @@ export const task = () => {
 					output: process.stdout
 				})
 
-				log(chalk`{magenta ${msg}}`)
-				log(chalk`{gray {cyan Example:} '${example}' }`)
+				Log.moduleName(msg)
+				Log.moduleExample(example)
 
 				rl.on('line', (line:string) => {
 					rl.close()
@@ -102,7 +97,5 @@ export const task = () => {
 
 		})
 	}
-
-	getNames()
 
 }
