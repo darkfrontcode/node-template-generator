@@ -41,7 +41,7 @@ export class Log
 
 	public static creatingPug() : void
 	{
-		log(chalk`{cyan {underline criating pug template.. }}`)
+		log(chalk`{cyan {underline criating pug.. }}`)
 	}
 
 	public static creatingStyle() : void
@@ -104,7 +104,7 @@ export class Log
 	
 	public static invalidOption() : void
 	{
-		log(chalk`{red Error: {white Option must be between 1-2 }}`)
+		log(chalk`{red Error: {white Option must be between 1-3 }}`)
 		this.choice()
 	}
 	

@@ -61,8 +61,8 @@ export const task = () => {
 			Log.creatingStyle()
 			await fs.writeFileSync(`${fullpath}/${componentName}.style.styl`, stylusTemplate)
 			
-			Log.done()
 			Log.moduleDone(moduleName)
+			Log.done()
 			
 		}
 	
