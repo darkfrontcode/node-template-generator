@@ -17,7 +17,7 @@ export const ${ moduleNameGenerator.captalizeName }Module = angular
 		`
 	}
 
-	public static router(nameGenerator: NameGenerator, componentNameGenerator: AngularComponent.NameGenerator) : string
+	public static router(componentNameGenerator: AngularComponent.NameGenerator) : string
 	{
 		return `import { ${ componentNameGenerator.componentName } } from './components/${ componentNameGenerator.name }'
 

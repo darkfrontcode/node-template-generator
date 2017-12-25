@@ -27,7 +27,7 @@ export const task = () => {
 		const componentNameGenerator 	= new angularComponent.NameGenerator(componentName) 
 
 		const moduleTemplate 			= TemplateGenerator.module(moduleNameGenerator, componentNameGenerator)
-		const routerTemplate			= TemplateGenerator.router(moduleNameGenerator, componentNameGenerator)
+		const routerTemplate			= TemplateGenerator.router(componentNameGenerator)
 		const componentTemplate 		= angularComponent.TemplateGenerator.component(componentNameGenerator)
 		const controllerTemplate 		= angularComponent.TemplateGenerator.controller(componentNameGenerator)
 		const pugTemplate 				= angularComponent.TemplateGenerator.pug(componentNameGenerator)
