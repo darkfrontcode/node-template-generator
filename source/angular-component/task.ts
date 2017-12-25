@@ -1,54 +1,44 @@
-import * as path 				from 'path'
 import * as fs 					from 'fs'
-import * as readline			from 'readline'
-import { Log } 					from '../utils/log.class'
-
+import * as Utils 				from '../utils'
 import { NameGenerator } 		from './name-generator.class'
 import { TemplateGenerator } 	from './template-generator.class'
 
 export const task = () => {
 	
-	const rl = readline.createInterface({
-		input: process.stdin,
-		output: process.stdout
-	})
-	
-	Log.componentName()
-	Log.componentExample()
-	
-	rl.on('line', (name:string) => {
-	
-		rl.close()
-		
-		const nameGenerator				= new NameGenerator(name)
+	run()
+
+	async function run()
+	{
+
+		const componentName 			= await Utils.readLineData(Utils.Log.componentName, Utils.Log.componentExample)
+		const nameGenerator				= new NameGenerator(componentName)
 		const componentTemplate 		= TemplateGenerator.component(nameGenerator)
 		const controllerTemplate 		= TemplateGenerator.controller(nameGenerator)
 		const pugTemplate 				= TemplateGenerator.pug(nameGenerator)
 		const stylusTemplate 			= TemplateGenerator.stylus(nameGenerator)
-	
+		
+		build()
+
 		async function build()
 		{
-			Log.creatingDirectory()
-			await fs.mkdirSync(name)
+			Utils.Log.creatingDirectory()
+			await fs.mkdirSync(componentName)
 			
-			Log.creatingComponent()
-			await fs.writeFileSync(`${name}/index.ts`, componentTemplate)
+			Utils.Log.creatingComponent()
+			await fs.writeFileSync(`${componentName}/index.ts`, componentTemplate)
 
-			Log.creatingController()
-			await fs.writeFileSync(`${name}/${name}.controller.ts`, controllerTemplate)
+			Utils.Log.creatingController()
+			await fs.writeFileSync(`${componentName}/${componentName}.controller.ts`, controllerTemplate)
 
-			Log.creatingPug()
-			await fs.writeFileSync(`${name}/${name}.template.pug`, pugTemplate)
+			Utils.Log.creatingPug()
+			await fs.writeFileSync(`${componentName}/${componentName}.template.pug`, pugTemplate)
 
-			Log.creatingStyle()
-			await fs.writeFileSync(`${name}/${name}.style.styl`, stylusTemplate)
+			Utils.Log.creatingStyle()
+			await fs.writeFileSync(`${componentName}/${componentName}.style.styl`, stylusTemplate)
 			
-			Log.componentDone(name)
-			Log.done()
+			Utils.Log.componentDone(componentName)
+			Utils.Log.done()
 			
 		}
-	
-		build()
-	
-	})
+	}
 }

@@ -1,19 +1,13 @@
-import * as path 				from 'path'
-import * as fs 					from 'fs'
 import * as readline			from 'readline'
 import * as angularModule		from './angular-module'
 import * as angularComponent 	from './angular-component'
-import { Log } 					from './utils/log.class'
+import * as Utils 				from './utils'
 
 run()
 
-/* ==========================================================================
-	-- Run
-========================================================================== */
-
 function run()
 {
-	Log.welcome()
+	Utils.Log.welcome()
 	actions()
 }
 
@@ -28,14 +22,14 @@ function menu(option:number)
 			angularComponent.task()
 		break
 		case 3:
-			Log.bye()
+			Utils.Log.bye()
 		break
 	}
 }
 
 function actions()
 {
-	Log.choice()
+	Utils.Log.choice()
 
 	const rl = readline.createInterface({
 		input: process.stdin,
@@ -48,7 +42,7 @@ function actions()
 	
 		if(isNaN(option))
 		{
-			Log.numbersOnly()
+			Utils.Log.numbersOnly()
 		}
 		else
 		{
@@ -59,7 +53,7 @@ function actions()
 			}
 			else
 			{
-				Log.invalidOption()
+				Utils.Log.invalidOption()
 			}
 		}
 	})

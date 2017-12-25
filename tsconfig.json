@@ -17,7 +17,7 @@
 		"allowJs": true
 	},
     "include": [
-        "source/angular/*"
+        "source/*"
     ],
 	"exclude": [
 		"node_modules"

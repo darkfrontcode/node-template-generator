@@ -77,14 +77,14 @@ export class Log
 		log(chalk`{magenta {underline ${ name } module created!}}`)
 	}
 
-	public static moduleName(name:string) : void
+	public static moduleName() : void
 	{
-		log(chalk`{magenta ${name}}`)
+		log(chalk`{magenta Enter a name for the module:}`)
 	}
 
 	public static moduleExample(example:string) : void
 	{
-		log(chalk`{gray {cyan Example:} '${example}' }`)
+		log(chalk`{gray {cyan Example:} 'app, app.core, app.core.services, etc' }`)
 	}
 	
 /* ==========================================================================
