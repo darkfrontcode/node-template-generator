@@ -6,7 +6,7 @@
 	"scripts": {
 		"start": "ts-node --cache-directory .tscache ./lib/source/index.ts --colors",
 		"dev:mon": "nodemon --exec ts-node --cache-directory .tscache ./lib/source/index.ts --colors",
-		"compile": "ts-node --compiler ./lib/source/index.ts --colors"
+		"compile": "ts-node --compiler ntypescript --project ./ --ignoreWarnings ./lib/source/index.ts --colors"
 	},
 	"bin": {
 		"node-template-generator": "./bin/demo-global.js"

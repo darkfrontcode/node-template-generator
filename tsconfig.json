@@ -12,9 +12,9 @@
 		"removeComments": true,
 		"sourceMap": true,
 		"suppressImplicitAnyIndexErrors": true,
-		"jsx": "react",
 		"allowSyntheticDefaultImports": true,
-		"allowJs": true
+		"allowJs": true,
+		"outDir": "build"
 	},
     "include": [
         "source/*"
