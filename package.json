@@ -8,7 +8,7 @@
 		"dev:mon": "nodemon --exec ts-node --cache-directory .tscache ./lib/index.ts --colors"
 	},
 	"bin": {
-		"node-template-generator": "./bin/demo-global.js"
+		"node-template-generator": "./bin/node-template-generator.js"
 	},
 	"preferGlobal": true,
 	"keywords": [],
@@ -19,7 +19,6 @@
 		"@types/node": "^8.5.2",
 		"chalk": "^2.3.0",
 		"nodemon": "^1.14.3",
-		"shelljs": "^0.7.8",
 		"ts-node": "^4.1.0",
 		"typescript": "^2.6.2"
 	}
