@@ -5,3 +5,7 @@
 
 ### How to use
 > node-template-generator
+
+<p align="left">
+  <img src="https://github.com/darkfrontcode/node-template-generator/blob/master/gif.gif">
+</p>
