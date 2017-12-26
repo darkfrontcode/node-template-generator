@@ -2,10 +2,10 @@
 	"name": "node-template-generator",
 	"version": "1.0.0",
 	"description": "A simple node template generator for angular 1.6 modules and components.",
-	"main": "./lib/build/index.js",
+	"main": "./lib/index.ts",
 	"scripts": {
-		"start": "ts-node --cache-directory .tscache ./lib/source/index.ts --colors",
-		"dev:mon": "nodemon --exec ts-node --cache-directory .tscache ./lib/source/index.ts --colors"
+		"start": "ts-node --cache-directory .tscache ./lib/index.ts --colors",
+		"dev:mon": "nodemon --exec ts-node --cache-directory .tscache ./lib/index.ts --colors"
 	},
 	"bin": {
 		"node-template-generator": "./bin/demo-global.js"
@@ -17,13 +17,9 @@
 	"dependencies": {
 		"@types/chalk": "^2.2.0",
 		"@types/node": "^8.5.2",
-		"awesome-typescript-loader": "^3.4.1",
 		"chalk": "^2.3.0",
-		"indent-string": "^3.2.0",
 		"nodemon": "^1.14.3",
-		"source-map-loader": "^0.2.3",
 		"ts-node": "^4.1.0",
-		"typescript": "^2.6.2",
-		"webpack": "^3.10.0"
+		"typescript": "^2.6.2"
 	}
 }

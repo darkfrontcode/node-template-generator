@@ -3,7 +3,9 @@ import * as angularModule		from './angular-module'
 import * as angularComponent 	from './angular-component'
 import * as Utils 				from './utils'
 
-export const nodeTemplateGenerator = function()
+nodeTemplateGenerator()
+
+function nodeTemplateGenerator()
 {
 	Utils.Log.welcome()
 	actions()

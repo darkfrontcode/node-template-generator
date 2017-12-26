@@ -1,2 +1,3 @@
 #!/usr/bin/env node
-require('../lib/build/index.js')()
+const shell = require('shelljs')
+shell.exec('ts-node ../lib/index.ts --colors')
