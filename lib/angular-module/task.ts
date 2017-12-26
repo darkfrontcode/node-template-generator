@@ -29,32 +29,32 @@ export const task = () => {
 		async function build()
 		{
 
-			const fullpath = `${moduleName}/components/${componentName}`
+			const fullpath = `${moduleNameGenerator.hyphenateName}/components/${componentNameGenerator.name}`
 
 			Utils.Log.creatingDirectory()
-			await fs.mkdirSync(moduleName)
-			await fs.mkdirSync(`${moduleName}/components`)
+			await fs.mkdirSync(moduleNameGenerator.hyphenateName)
+			await fs.mkdirSync(`${moduleNameGenerator.hyphenateName}/components`)
 			await fs.mkdirSync(fullpath)
 
 			Utils.Log.creatingModule()
-			await fs.writeFileSync(`${moduleName}/index.ts`, moduleTemplate)
+			await fs.writeFileSync(`${moduleNameGenerator.hyphenateName}/index.ts`, moduleTemplate)
 
 			Utils.Log.creatingRouter()
-			await fs.writeFileSync(`${moduleName}/router.ts`, routerTemplate)
+			await fs.writeFileSync(`${moduleNameGenerator.hyphenateName}/router.ts`, routerTemplate)
 
 			Utils.Log.creatingComponent()
 			await fs.writeFileSync(`${fullpath}/index.ts`, componentTemplate)
 			
 			Utils.Log.creatingController()
-			await fs.writeFileSync(`${fullpath}/${componentName}.controller.ts`, controllerTemplate)
+			await fs.writeFileSync(`${fullpath}/${componentNameGenerator.name}.controller.ts`, controllerTemplate)
 			
 			Utils.Log.creatingPug()
-			await fs.writeFileSync(`${fullpath}/${componentName}.template.pug`, pugTemplate)
+			await fs.writeFileSync(`${fullpath}/${componentNameGenerator.name}.template.pug`, pugTemplate)
 			
 			Utils.Log.creatingStyle()
-			await fs.writeFileSync(`${fullpath}/${componentName}.style.styl`, stylusTemplate)
+			await fs.writeFileSync(`${fullpath}/${componentNameGenerator.name}.style.styl`, stylusTemplate)
 			
-			Utils.Log.moduleDone(moduleName)
+			Utils.Log.moduleDone(moduleNameGenerator.name)
 			Utils.Log.done()
 			
 		}

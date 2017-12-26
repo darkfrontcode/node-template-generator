@@ -1,4 +1,6 @@
-export class NameGenerator
+import * as Utils from '../utils'
+
+export class NameGenerator implements Utils.INormalizeName
 {
 	public name:string
 	public captalizeName:string
@@ -8,7 +10,7 @@ export class NameGenerator
 
 	constructor(name:string)
 	{
-		this.name = name
+		this.name = this.normalize(name)
 		this.captalizeName = this.captalize()
 		this.aliasName = this.alias()
 		this.controllerName = this.controller()
@@ -18,6 +20,7 @@ export class NameGenerator
 	private captalize() : string
 	{
 		return this.name
+			.toLowerCase()
 			.split('-')
 			.map(s => this.capitalizeFirstLetter(s))
 			.join(' ')
@@ -26,6 +29,7 @@ export class NameGenerator
 	private alias() : string
 	{
 		return this.name
+			.toLowerCase()
 			.split('-')
 			.map((s, i) => {
 				if(i!=0) s = this.capitalizeFirstLetter(s)
@@ -37,6 +41,7 @@ export class NameGenerator
 	private controller() : string
 	{
 		return this.name
+			.toLowerCase()
 			.concat('-controller')
 			.split('-')
 			.map(s => this.capitalizeFirstLetter(s))
@@ -46,6 +51,7 @@ export class NameGenerator
 	private component() : string
 	{
 		return this.name
+			.toLowerCase()
 			.concat('-component')
 			.split('-')
 			.map(s => this.capitalizeFirstLetter(s))
@@ -56,4 +62,10 @@ export class NameGenerator
 	{
 		return `${string.charAt(0).toUpperCase()}${string.slice(1)}`
 	}
+
+	public normalize(name: string): string
+	{
+		return name.toLowerCase().replace(/[^a-zA-Z-]/g, '')
+	}
+
 }

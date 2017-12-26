@@ -9,34 +9,33 @@ export const task = () => {
 
 	async function run()
 	{
-
 		const componentName 			= await Utils.readLineData(Utils.Log.componentName, Utils.Log.componentExample)
 		const nameGenerator				= new NameGenerator(componentName)
 		const componentTemplate 		= TemplateGenerator.component(nameGenerator)
 		const controllerTemplate 		= TemplateGenerator.controller(nameGenerator)
 		const pugTemplate 				= TemplateGenerator.pug(nameGenerator)
 		const stylusTemplate 			= TemplateGenerator.stylus(nameGenerator)
-		
+
 		build()
 
 		async function build()
 		{
 			Utils.Log.creatingDirectory()
-			await fs.mkdirSync(componentName)
+			await fs.mkdirSync(nameGenerator.name)
 			
 			Utils.Log.creatingComponent()
-			await fs.writeFileSync(`${componentName}/index.ts`, componentTemplate)
+			await fs.writeFileSync(`${nameGenerator.name}/index.ts`, componentTemplate)
 
 			Utils.Log.creatingController()
-			await fs.writeFileSync(`${componentName}/${componentName}.controller.ts`, controllerTemplate)
+			await fs.writeFileSync(`${nameGenerator.name}/${nameGenerator.name}.controller.ts`, controllerTemplate)
 
 			Utils.Log.creatingPug()
-			await fs.writeFileSync(`${componentName}/${componentName}.template.pug`, pugTemplate)
+			await fs.writeFileSync(`${nameGenerator.name}/${nameGenerator.name}.template.pug`, pugTemplate)
 
 			Utils.Log.creatingStyle()
-			await fs.writeFileSync(`${componentName}/${componentName}.style.styl`, stylusTemplate)
+			await fs.writeFileSync(`${nameGenerator.name}/${nameGenerator.name}.style.styl`, stylusTemplate)
 			
-			Utils.Log.componentDone(componentName)
+			Utils.Log.componentDone(nameGenerator.name)
 			Utils.Log.done()
 			
 		}
